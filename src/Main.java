@@ -3,6 +3,7 @@
 public class Main {
     public static void main(String[] args) {
             WordMatch game = new WordMatch("mississippi");
+            System.out.println(game);
 
             /* scoreGuess process:
             --- need variable index to be global so we can track which letter we are on everywhere
@@ -18,6 +19,8 @@ public class Main {
             and secret. (Repeat 3.1 until the letters don't match anymore,
             in which case go back to #1-->3.0)
 
+
+
             guess: i
             mississippi -> no
             ississippi -> +1
@@ -29,6 +32,7 @@ public class Main {
             ippi -> +1
             ppi -> no
             pi -> no
+
             i -> +1
 
             guess: iss

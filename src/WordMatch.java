@@ -1,7 +1,6 @@
 public class WordMatch {
     private String secret;
 
-
     /**
      * Constructs a WordMatch object with the given secret string of lowercase
      * letters.
@@ -16,23 +15,33 @@ public class WordMatch {
      * Precondition: 0 < guess.length() <= secret.length()
      */
     public int scoreGuess(String guess) {
-        substring_occurences = 0;
+        int substring_occurences = 0;
+        int current_index = 0;
+        if (guess.length() > secret.length()) {
+            return 0;
+        }
         /* convert to list*/
         char[] list = guess.toCharArray();
         char[] sec_list = secret.toCharArray();
-        for (int i = 0; i < 9999; i++){
-            if (list[i] == sec_list[0]) {
-                for (int j =1; j < list.size(); j++) {
-                    if (list[j] == sec_list[i + 1] ){
-                        System.out.println("YAY");
-
-
+        for (int i = current_index; i <= secret.length() ; i++) {
+            if (guess.length() == 1) {
+                if (list[i] == sec_list[i] && (i <= secret.length())) {
+                    substring_occurences += 1;
+                    current_index += 1;
+                }
+            }
+            else if (guess.length() > 1) {
+                if (list[i] == sec_list[i] && i <= secret.length()) {
+                    current_index += 1;
+                    for (int j = current_index; j <= guess.length() ; j++) {
+                        if (list[j] == sec_list[j] && j <= secret.length()) {
+                            j += 1;
+                        }
                     }
                 }
 
-
-
             }
+
         }
         return substring_occurences;
     }
